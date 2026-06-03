@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>klera — supporting a life well lived, longer.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #000080;
+    --card: #1a4fef;
+    --primary: #007fff;
+    --sky: #89cff0;
+    --gold: #efbd1a;
+    --surface: #0a0a6e;
+    --surface2: #0d0d8a;
+    --text: rgba(255,255,255,0.95);
+    --text-muted: rgba(255,255,255,0.55);
+    --text-dim: rgba(255,255,255,0.35);
+    --border: rgba(255,255,255,0.1);
+    --border-hover: rgba(255,255,255,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(0,0,128,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .logo-dot {
+    width: 6px; height: 6px;
+    background: var(--sky);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+
+  .btn-ghost {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); }
+
+  .btn-cta {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--deep);
+    background: var(--text);
+    border: none;
+    border-radius: 6px;
+    padding: 9px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .btn-cta:hover { opacity: 0.88; }
+
+  /* ── BANNER ── */
+  .banner {
+    margin-top: 64px;
+    background: var(--primary);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.01em;
+  }
+  .banner a { color: #fff; font-weight: 500; margin-left: 4px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: calc(100vh - 108px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-left {
+    padding: 100px 64px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 32px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 1px;
+    background: var(--sky);
+  }
+
+  .hero-h1 {
+    font-size: clamp(40px, 4vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--text);
+    margin-bottom: 28px;
+    max-width: 480px;
+  }
+
+  .hero-h1 strong {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 400px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .btn-primary {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--deep);
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 13px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-secondary {
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border-hover);
+    border-radius: 6px;
+    padding: 12px 26px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .trust-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .trust-dot {
+    width: 5px; height: 5px;
+    background: var(--sky);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  .hero-right {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    background: var(--surface);
+  }
+
+  .hero-card {
+    background: rgba(26,79,239,0.25);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    transition: border-color 0.3s;
+  }
+
+  .hero-card:hover { border-color: var(--border-hover); }
+
+  .card-step {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sky);
+    background: rgba(137,207,240,0.1);
+    border-radius: 4px;
+    padding: 3px 8px;
+    margin-top: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── WHY ── */
+  .why {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .why-item {
+    padding: 40px 36px;
+    border-right: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .why-item:last-child { border-right: none; }
+  .why-item:hover { background: var(--surface); }
+
+  .why-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 16px;
+    color: var(--sky);
+  }
+
+  .why-item h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .why-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+
+  /* ── PROCESS ── */
+  .process { padding: 100px 64px; }
+
+  .process-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 72px;
+  }
+
+  .process-header h2 {
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .process-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
+  .step {
+    background: var(--deep);
+    padding: 36px 28px;
+    transition: background 0.3s;
+  }
+  .step:hover { background: var(--surface); }
+
+  .step-num {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .step h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .step p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .step-snippet {
+    margin-top: 20px;
+    background: rgba(26,79,239,0.2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .step-snippet strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .process-footer {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .process-note {
+    font-size: 13px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  /* ── CALCULATOR ── */
+  .calculator { padding: 100px 64px; background: var(--surface); }
+
+  .calc-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+  }
+
+  .calc-text h2 {
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .calc-text p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .stat-block {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 36px;
+  }
+  .stat-num {
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -3px;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    max-width: 140px;
+    font-weight: 300;
+  }
+
+  .calc-widget {
+    background: rgba(26,79,239,0.2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px 36px;
+  }
+
+  .calc-widget h3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .calc-field { margin-bottom: 28px; }
+
+  .calc-field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .input-row { display: flex; gap: 10px; }
+
+  .num-wrap {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,128,0.6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    flex: 1;
+    transition: border-color 0.2s;
+  }
+  .num-wrap:focus-within { border-color: var(--primary); }
+
+  .num-wrap input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Karla', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    width: 70px;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .num-wrap span {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 0 12px 0 0;
+    font-weight: 300;
+  }
+
+  .calc-result {
+    background: rgba(0,127,255,0.12);
+    border: 1px solid rgba(0,127,255,0.3);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 28px;
+    text-align: center;
+  }
+
+  .result-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .result-val {
+    font-size: 52px;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .result-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .calc-disclaimer {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 16px;
+    text-align: center;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ── BENEFITS ── */
+  .benefits { padding: 100px 64px; }
+
+  .benefits-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+
+  .benefits-header h2 {
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .benefits-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .benefit {
+    background: var(--deep);
+    padding: 36px 30px;
+    transition: background 0.3s;
+  }
+  .benefit:hover { background: var(--surface); }
+
+  .benefit-num {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .benefit h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .benefit p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── FAQ ── */
+  .faq { padding: 100px 64px; background: var(--surface); }
+
+  .faq-inner { max-width: 780px; margin: 0 auto; }
+
+  .faq-header { text-align: center; margin-bottom: 56px; }
+
+  .faq-header h2 {
+    font-size: clamp(30px, 3vw, 44px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-top: 16px;
+  }
+
+  .faq-list {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item:hover { background: rgba(26,79,239,0.1); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .faq-q span {
+    font-size: 15px;
+    color: var(--text);
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    width: 24px; height: 24px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: all 0.25s;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-item.open .faq-a { max-height: 180px; }
+
+  .faq-a p {
+    padding: 0 28px 22px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 80px 64px 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 280px;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col ul a {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--text); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .footer-disclaimer {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 560px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-weight: 300;
+  }
+
+  /* ── GOLD ACCENT ── */
+  .gold { color: var(--gold); }
+  .sky { color: var(--sky); }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in:nth-child(2) { transition-delay: 0.08s; }
+  .fade-in:nth-child(3) { transition-delay: 0.16s; }
+  .fade-in:nth-child(4) { transition-delay: 0.24s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 28px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 80px 40px; }
+    .why { grid-template-columns: 1fr 1fr; }
+    .process { padding: 72px 40px; }
+    .process-header { grid-template-columns: 1fr; gap: 20px; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .calculator { padding: 72px 40px; }
+    .calc-inner { grid-template-columns: 1fr; gap: 48px; }
+    .benefits { padding: 72px 40px; }
+    .benefits-header { grid-template-columns: 1fr; gap: 20px; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .faq { padding: 72px 40px; }
+    footer { padding: 60px 40px 32px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .why { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">klera <span class="logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="#process">our process</a></li>
+    <li><a href="#benefits">benefits</a></li>
+    <li><a href="#faq">faq</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-ghost">sign in</button>
+    <a href="#" class="btn-cta">get started</a>
+  </div>
+</nav>
+
+<div class="banner">
+  find the right plan for you — <a href="#">take the quiz →</a>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">health stewardship</div>
+    <h1 class="hero-h1">
+      thoughtful care for your <strong>best, longest</strong> life.
+    </h1>
+    <p class="hero-sub">
+      glp-1 therapy, clinical guidance, and ongoing support in one streamlined, holistic experience.
+    </p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">start your journey</a>
+      <a href="#process" class="btn-secondary">see how it works</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span class="trust-dot"></span>licensed clinicians</div>
+      <div class="trust-item"><span class="trust-dot"></span>discreet delivery</div>
+      <div class="trust-item"><span class="trust-dot"></span>hipaa secure</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card fade-in">
+      <div class="card-step">01 · intake</div>
+      <div class="card-title">tell us about you.</div>
+      <div class="card-desc">a short online intake covers your goals, history, and routine. about 5 minutes.</div>
+      <div class="card-tag">● free · no commitment</div>
+    </div>
+    <div class="hero-card fade-in">
+      <div class="card-step">02 · clinician review</div>
+      <div class="card-title">meet your klera clinician.</div>
+      <div class="card-desc">a licensed provider reviews your intake and prescribes the right plan — often same day.</div>
+      <div class="card-tag sky">● verified clinician · same-day review</div>
+    </div>
+    <div class="hero-card fade-in">
+      <div class="card-step">03 · treatment</div>
+      <div class="card-title">start treatment from home.</div>
+      <div class="card-desc">medication ships discreetly to your door. right dose, on schedule, no surprises.</div>
+      <div class="card-tag">● discreet · tracked</div>
+    </div>
+    <div class="hero-card fade-in">
+      <div class="card-step">04 · ongoing care</div>
+      <div class="card-title">stay supported, every step.</div>
+      <div class="card-desc">check-ins, messaging, dose changes, and refill requests — all in your klera portal.</div>
+      <div class="card-tag gold">● avg. 5.2 lbs down · month one</div>
+    </div>
+  </div>
+</section>
+
+<div class="why">
+  <div class="why-item">
+    <div class="why-icon">◈</div>
+    <h3>science-driven</h3>
+    <p>evidence-guided care decisions, not trend-chasing. clinical rigor at every step.</p>
+  </div>
+  <div class="why-item">
+    <div class="why-icon">◎</div>
+    <h3>ongoing support</h3>
+    <p>a real care team that checks in, adjusts, and responds — for as long as you need.</p>
+  </div>
+  <div class="why-item">
+    <div class="why-icon">◇</div>
+    <h3>blue chip pharmacy</h3>
+    <p>vetted pharmacy partners. the right medication, compounded or brand, delivered right.</p>
+  </div>
+  <div class="why-item">
+    <div class="why-icon">◉</div>
+    <h3>secure & private</h3>
+    <p>hipaa-compliant. your data stays with your care team — no one else.</p>
+  </div>
+</div>
+
+<section class="process" id="process">
+  <div class="process-header">
+    <div>
+      <div class="section-label">our process</div>
+      <h2>thoughtful care, in four clear steps.</h2>
+    </div>
+    <p>from your first intake to ongoing support, klera coordinates clinical guidance, medication, and follow-up so treatment fits into the rest of your life.</p>
+  </div>
+
+  <div class="process-grid">
+    <div class="step fade-in">
+      <div class="step-num">step 01</div>
+      <h3>tell us about you.</h3>
+      <p>a short online intake covers your goals, history, and how you'd like care to fit your routine. about 5 minutes.</p>
+      <div class="step-snippet">
+        <strong>intake</strong>
+        what brings you here today?<br>
+        <span style="opacity:0.6">weight loss · metabolic health · pcos</span>
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">step 02</div>
+      <h3>meet your klera clinician.</h3>
+      <p>a licensed provider reviews your intake and prescribes the right plan — often the same day, always with a note from someone who actually read your story.</p>
+      <div class="step-snippet">
+        <strong>verified clinician</strong>
+        "reviewed your intake. starting you on a 0.25 mg semaglutide titration."
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">step 03</div>
+      <h3>start treatment from home.</h3>
+      <p>medication ships discreetly to your door. no pharmacy lines, no unmarked-package surprises — just the right dose, on schedule.</p>
+      <div class="step-snippet">
+        <strong>shipping</strong>
+        semaglutide 0.25 mg · 4-week supply<br>
+        <span style="opacity:0.6">arrives discreetly, on schedule</span>
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">step 04</div>
+      <h3>stay supported, every step.</h3>
+      <p>weight check-ins, messaging, dose changes, and refill requests all happen in your klera portal — for as long as you need.</p>
+      <div class="step-snippet">
+        <strong>progress</strong>
+        down this month: <strong style="color:#fff">5.2 lbs</strong><br>
+        <span style="opacity:0.6">"looking great — let me know about next refill."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="process-footer">
+    <a href="#" class="btn-primary">start your intake</a>
+    <span class="process-note">free · takes about 5 minutes</span>
+  </div>
+</section>
+
+<section class="calculator" id="calculator">
+  <div class="calc-inner">
+    <div class="calc-text">
+      <div class="section-label">your potential</div>
+      <h2>take control of your weight loss.</h2>
+      <p>patients on glp-1 therapy lose up to 15–20% of their body weight in their first year. enter your numbers to see what's possible.</p>
+      <div class="stat-block">
+        <span class="stat-num">20%</span>
+        <span class="stat-label">avg. body weight lost in year one on glp-1 therapy</span>
+      </div>
+      <a href="#" class="btn-primary">get started</a>
+    </div>
+    <div class="calc-widget">
+      <h3>enter your height and weight to see what's possible.</h3>
+      <div class="calc-field">
+        <label>how tall are you?</label>
+        <div class="input-row">
+          <div class="num-wrap">
+            <input type="number" id="feet" value="5" min="4" max="7">
+            <span>ft</span>
+          </div>
+          <div class="num-wrap">
+            <input type="number" id="inches" value="8" min="0" max="11">
+            <span>in</span>
+          </div>
+        </div>
+      </div>
+      <div class="calc-field">
+        <label>how much do you currently weigh?</label>
+        <div class="input-row">
+          <div class="num-wrap" style="max-width:150px">
+            <input type="number" id="weight" value="200" min="100" max="500">
+            <span>lb</span>
+          </div>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="result-label">you could lose up to</div>
+        <div class="result-val" id="lossResult">40 lb</div>
+        <div class="result-desc">projected 20% body weight reduction in 12 months</div>
+      </div>
+      <p class="calc-disclaimer">illustrative estimate. clinical eligibility and treatment plans vary. results not guaranteed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="benefits-header">
+    <div>
+      <div class="section-label">clinical benefits</div>
+      <h2>life-changing benefits of glp-1 medications.</h2>
+    </div>
+    <p>formulations designed around your biology, not just your scale.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit fade-in">
+      <div class="benefit-num">01</div>
+      <h3>significant weight loss</h3>
+      <p>patients taking glp-1s lose up to 15% of their body weight in one year of consistent treatment.</p>
+    </div>
+    <div class="benefit fade-in">
+      <div class="benefit-num">02</div>
+      <h3>improved heart health</h3>
+      <p>consistent treatment may help support lower blood pressure and stronger cardiovascular outcomes.</p>
+    </div>
+    <div class="benefit fade-in">
+      <div class="benefit-num">03</div>
+      <h3>better blood sugar control</h3>
+      <p>glp-1 medications can help regulate glucose levels and improve long-term metabolic stability.</p>
+    </div>
+    <div class="benefit fade-in">
+      <div class="benefit-num">04</div>
+      <h3>reduced food cravings</h3>
+      <p>treatment lowers appetite signals and makes it easier to maintain healthier eating patterns over time.</p>
+    </div>
+    <div class="benefit fade-in">
+      <div class="benefit-num">05</div>
+      <h3>increased energy levels</h3>
+      <p>steady progress and improved metabolic health contribute to better day-to-day energy and vitality.</p>
+    </div>
+    <div class="benefit fade-in">
+      <div class="benefit-num">06</div>
+      <h3>enhanced quality of life</h3>
+      <p>sustained weight loss and clinical support make movement, confidence, and daily routines feel easier.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="section-label" style="justify-content:center">frequently asked</div>
+      <h2>questions.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>how does the klera process work?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>you begin with a short intake, review your goals with a clinician, complete any required lab work, and then move into a guided treatment plan with ongoing follow-up.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>who is this program designed for?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>this program is intended for adults who want medically guided support for weight management and want a simpler way to coordinate care, prescriptions, and check-ins.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>will i know whether treatment is right for me?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>a clinician reviews your health history, current measurements, and goals before making a recommendation. the experience is designed to give you clarity before anything moves forward.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>what kind of support do i receive after starting?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>the care model includes ongoing monitoring, progress reviews, and practical support so treatment does not feel like a one-time handoff after the first appointment.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>what does treatment typically cost?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>pricing depends on the medication and plan your clinician recommends. you'll see a clear, all-in monthly figure — including the prescription, clinical follow-up, and shipping — before anything is charged.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>is my information kept private?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a"><p>your health information is handled under hipaa and is only shared with the clinicians directly involved in your care. shipments arrive in plain, unmarked packaging.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">klera <span class="logo-dot"></span></a>
+      <p>thoughtful obesity medicine, clinical guidance, and ongoing support in one elegant experience. supporting a life well lived, longer.</p>
+      <a href="#" class="btn-primary">start your journey</a>
+    </div>
+    <div class="footer-col">
+      <h4>company</h4>
+      <ul>
+        <li><a href="#">about</a></li>
+        <li><a href="#">our process</a></li>
+        <li><a href="#">care plans</a></li>
+        <li><a href="#">for providers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>support</h4>
+      <ul>
+        <li><a href="#">sign in</a></li>
+        <li><a href="#">faq</a></li>
+        <li><a href="#">contact support</a></li>
+        <li><a href="#">privacy policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    *these statements have not been evaluated by the food and drug administration. this product is not intended to diagnose, treat, cure or prevent any disease. weight loss results depicted are not typical and individual results may vary.
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 klera (klera health, inc.)</p>
+    <p>all rights reserved</p>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    btn.closest('.faq-item').classList.toggle('open');
+  }
+
+  function updateCalc() {
+    const w = parseFloat(document.getElementById('weight').value) || 200;
+    const loss = Math.round(w * 0.20);
+    document.getElementById('lossResult').textContent = loss + ' lb';
+  }
+
+  ['weight','feet','inches'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateCalc);
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
