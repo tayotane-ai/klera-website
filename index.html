@@ -6,7 +6,7 @@
 <title>klera — supporting a life well lived, longer.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
     --deep: #000080;
@@ -14,13 +14,13 @@
     --primary: #007fff;
     --sky: #89cff0;
     --gold: #efbd1a;
-    --surface: #0a0a6e;
-    --surface2: #0d0d8a;
-    --text: rgba(255,255,255,0.95);
-    --text-muted: rgba(255,255,255,0.55);
-    --text-dim: rgba(255,255,255,0.35);
-    --border: rgba(255,255,255,0.1);
-    --border-hover: rgba(255,255,255,0.2);
+    --cream: #f0f4ff;
+    --cream2: #e8eeff;
+    --white: #ffffff;
+    --text: #0a1a4a;
+    --text-mid: #2a3a6a;
+    --text-muted: #5a6a9a;
+    --border: rgba(0,0,128,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,11 +28,9 @@
 
   body {
     font-family: 'Karla', sans-serif;
-    background: var(--deep);
+    background: var(--white);
     color: var(--text);
     overflow-x: hidden;
-    font-size: 16px;
-    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -44,452 +42,589 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 48px;
+    padding: 0 40px;
     height: 64px;
-    background: rgba(0,0,128,0.85);
+    background: rgba(240,244,255,0.88);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   .logo {
-    font-size: 20px;
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'Karla', sans-serif;
+    font-size: 19px;
     font-weight: 500;
-    color: var(--text);
+    color: var(--deep);
     text-decoration: none;
-    letter-spacing: -0.3px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
 
   .logo-dot {
-    width: 6px; height: 6px;
-    background: var(--sky);
+    width: 7px; height: 7px;
+    background: var(--card);
     border-radius: 50%;
     display: inline-block;
   }
 
   .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 36px;
+    display: flex; align-items: center; gap: 32px;
     list-style: none;
   }
 
   .nav-links a {
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--text-mid);
     text-decoration: none;
     font-weight: 400;
     transition: color 0.2s;
-    letter-spacing: 0.01em;
   }
-
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { color: var(--deep); }
 
   .nav-right { display: flex; align-items: center; gap: 14px; }
 
-  .btn-ghost {
+  .btn-signin {
     font-family: 'Karla', sans-serif;
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--text-mid);
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px 0;
     transition: color 0.2s;
   }
-  .btn-ghost:hover { color: var(--text); }
+  .btn-signin:hover { color: var(--deep); }
 
-  .btn-cta {
+  .btn-started {
     font-family: 'Karla', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: var(--deep);
-    background: var(--text);
+    color: #fff;
+    background: var(--deep);
     border: none;
-    border-radius: 6px;
-    padding: 9px 20px;
+    border-radius: 100px;
+    padding: 10px 22px;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.2s;
-    letter-spacing: 0.01em;
+    transition: background 0.2s;
   }
-  .btn-cta:hover { opacity: 0.88; }
+  .btn-started:hover { background: var(--card); }
 
   /* ── BANNER ── */
   .banner {
     margin-top: 64px;
-    background: var(--primary);
+    background: #c8e887;
     text-align: center;
     padding: 10px 20px;
     font-size: 13px;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 0.01em;
+    font-weight: 500;
+    color: #2a4a0a;
   }
-  .banner a { color: #fff; font-weight: 500; margin-left: 4px; }
+  .banner a { color: #2a4a0a; font-weight: 600; margin-left: 4px; }
 
   /* ── HERO ── */
   .hero {
-    min-height: calc(100vh - 108px);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid var(--border);
+    min-height: calc(100vh - 104px);
+    background: var(--cream);
   }
 
   .hero-left {
-    padding: 100px 64px 80px;
+    padding: 100px 64px 80px 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid var(--border);
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--sky);
-    margin-bottom: 32px;
-  }
-
-  .eyebrow::before {
-    content: '';
-    display: block;
-    width: 18px;
-    height: 1px;
-    background: var(--sky);
   }
 
   .hero-h1 {
-    font-size: clamp(40px, 4vw, 58px);
-    font-weight: 300;
-    line-height: 1.1;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 4.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--deep);
     letter-spacing: -1.5px;
-    color: var(--text);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     max-width: 480px;
-  }
-
-  .hero-h1 strong {
-    font-weight: 500;
-    color: #fff;
   }
 
   .hero-sub {
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.65;
     color: var(--text-muted);
-    max-width: 400px;
-    margin-bottom: 48px;
+    max-width: 380px;
+    margin-bottom: 40px;
     font-weight: 300;
   }
 
-  .hero-ctas {
+  .hero-btns {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 56px;
+    gap: 14px;
+    margin-bottom: 52px;
   }
 
-  .btn-primary {
+  .btn-pill-dark {
     font-family: 'Karla', sans-serif;
     font-size: 15px;
     font-weight: 500;
-    color: var(--deep);
-    background: #fff;
+    color: #fff;
+    background: var(--deep);
     border: none;
-    border-radius: 6px;
-    padding: 13px 28px;
+    border-radius: 100px;
+    padding: 14px 28px;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.2s;
-    letter-spacing: 0.01em;
+    transition: background 0.2s;
   }
-  .btn-primary:hover { opacity: 0.88; }
+  .btn-pill-dark:hover { background: var(--card); }
 
-  .btn-secondary {
+  .btn-pill-link {
     font-family: 'Karla', sans-serif;
     font-size: 15px;
-    color: var(--text-muted);
-    background: none;
-    border: 1px solid var(--border-hover);
-    border-radius: 6px;
-    padding: 12px 26px;
-    cursor: pointer;
+    color: var(--deep);
     text-decoration: none;
-    transition: all 0.2s;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s;
   }
-  .btn-secondary:hover {
-    color: var(--text);
-    border-color: rgba(255,255,255,0.35);
-  }
+  .btn-pill-link:hover { gap: 8px; }
 
   .trust-row {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
   }
 
-  .trust-item {
+  .trust-badge {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     font-size: 13px;
-    color: var(--text-dim);
+    color: var(--text-muted);
     font-weight: 300;
   }
 
-  .trust-dot {
-    width: 5px; height: 5px;
-    background: var(--sky);
+  .trust-check {
+    width: 18px; height: 18px;
+    background: var(--deep);
     border-radius: 50%;
-    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    flex-shrink: 0;
   }
 
   .hero-right {
-    padding: 80px 64px;
+    position: relative;
+    background: var(--deep);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg-circles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hero-pill-visual {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pill-container {
+    width: 160px;
+    height: 240px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 16px;
-    background: var(--surface);
   }
 
-  .hero-card {
-    background: rgba(26,79,239,0.25);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px 28px;
-    transition: border-color 0.3s;
+  .pill-inner {
+    width: 68px;
+    height: 112px;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--card) 100%);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .hero-card:hover { border-color: var(--border-hover); }
+  .pill-dot {
+    width: 7px; height: 7px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+  }
 
-  .card-step {
+  .pill-label {
+    font-size: 8px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.06em;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    line-height: 1.4;
+  }
+
+  .hero-stat-badge {
+    position: absolute;
+    bottom: 44px;
+    right: 44px;
+    background: rgba(240,244,255,0.95);
+    border-radius: 16px;
+    padding: 18px 22px;
+    max-width: 200px;
+  }
+
+  .hero-stat-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .hero-stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--deep);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .hero-stat-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 5px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  /* ── DARK BAND ── */
+  .dark-band {
+    background: var(--deep);
+    padding: 56px 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .band-item {
+    padding: 0 36px 0 0;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 36px;
+  }
+  .band-item:last-child { border-right: none; margin-right: 0; }
+
+  .band-label {
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--sky);
+    color: rgba(255,255,255,0.4);
     margin-bottom: 10px;
     font-weight: 500;
   }
 
-  .card-title {
+  .band-title {
     font-size: 15px;
     font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
+    color: #fff;
+    line-height: 1.3;
   }
 
-  .card-desc {
+  .band-desc {
     font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  .card-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--sky);
-    background: rgba(137,207,240,0.1);
-    border-radius: 4px;
-    padding: 3px 8px;
-    margin-top: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── WHY ── */
-  .why {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .why-item {
-    padding: 40px 36px;
-    border-right: 1px solid var(--border);
-    transition: background 0.3s;
-  }
-  .why-item:last-child { border-right: none; }
-  .why-item:hover { background: var(--surface); }
-
-  .why-icon {
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    font-size: 16px;
-    color: var(--sky);
-  }
-
-  .why-item h3 {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 6px;
-    letter-spacing: 0.01em;
-  }
-
-  .why-item p {
-    font-size: 13px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     line-height: 1.55;
+    margin-top: 6px;
     font-weight: 300;
   }
 
   /* ── SECTION SHARED ── */
-  section { border-bottom: 1px solid var(--border); }
-
-  .section-label {
+  .section-eyebrow {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 20px;
+    color: var(--primary);
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
-    gap: 10px;
-  }
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 16px;
-    height: 1px;
-    background: var(--text-dim);
+    gap: 8px;
   }
 
-  /* ── PROCESS ── */
-  .process { padding: 100px 64px; }
+  .section-eyebrow::before {
+    content: '●';
+    font-size: 6px;
+    color: var(--primary);
+  }
 
-  .process-header {
+  /* ── PRODUCTS / STEPS ── */
+  .products {
+    background: var(--deep);
+    padding: 100px 80px;
+  }
+
+  .products-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: end;
-    margin-bottom: 72px;
+    margin-bottom: 60px;
   }
 
-  .process-header h2 {
-    font-size: clamp(32px, 3vw, 48px);
-    font-weight: 300;
-    letter-spacing: -1px;
-    line-height: 1.1;
-    color: var(--text);
+  .products-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 3.5vw, 54px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
   }
 
-  .process-header p {
+  .products-header p {
     font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
     font-weight: 300;
-    max-width: 380px;
+    max-width: 340px;
+    margin-bottom: 20px;
   }
 
-  .process-grid {
+  .products-grid {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .product-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 32px 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
     overflow: hidden;
-    margin-bottom: 48px;
+  }
+  .product-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.15);
   }
 
-  .step {
-    background: var(--deep);
-    padding: 36px 28px;
-    transition: background 0.3s;
-  }
-  .step:hover { background: var(--surface); }
-
-  .step-num {
+  .product-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(200,232,135,0.15);
+    border: 1px solid rgba(200,232,135,0.3);
+    border-radius: 100px;
+    padding: 4px 12px;
     font-size: 11px;
-    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: #c8e887;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+
+  .product-step-tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 24px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 16px;
     font-weight: 500;
   }
 
-  .step h3 {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 12px;
-    letter-spacing: -0.2px;
+  .product-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    letter-spacing: -2px;
+    position: absolute;
+    top: 20px;
+    right: 24px;
   }
 
-  .step p {
+  .product-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(0,127,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,127,255,0.3);
+  }
+
+  .product-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  .product-card p {
     font-size: 13px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     line-height: 1.65;
     font-weight: 300;
   }
 
-  .step-snippet {
+  .product-snippet {
     margin-top: 20px;
-    background: rgba(26,79,239,0.2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
     padding: 12px 14px;
     font-size: 12px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     line-height: 1.5;
+    border: 1px solid rgba(255,255,255,0.06);
   }
 
-  .step-snippet strong {
+  .product-snippet strong {
     display: block;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--sky);
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     font-weight: 500;
   }
 
-  .process-footer {
+  .products-cta {
+    margin-top: 52px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 16px;
   }
-  .process-note {
+
+  .note-text {
     font-size: 13px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.35);
     font-weight: 300;
   }
 
-  /* ── CALCULATOR ── */
-  .calculator { padding: 100px 64px; background: var(--surface); }
+  /* ── SCIENCE SECTION ── */
+  .science {
+    padding: 100px 80px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
 
-  .calc-inner {
+  .science-text .section-eyebrow { color: var(--deep); }
+  .science-text .section-eyebrow::before { color: var(--deep); }
+
+  .science-text h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 3vw, 48px);
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    margin-bottom: 20px;
+  }
+
+  .science-text p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 36px;
+  }
+
+  .science-visual {
+    background: rgba(26,79,239,0.08);
+    border-radius: 24px;
+    padding: 48px;
+    border: 1px solid rgba(0,0,128,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .science-stat-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    color: var(--deep);
+    letter-spacing: -4px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .science-stat-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 240px;
+    margin-bottom: 36px;
+  }
+
+  .science-divider {
+    height: 1px;
+    background: rgba(0,0,128,0.1);
+    margin-bottom: 28px;
+  }
+
+  .science-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .science-pill {
+    background: rgba(0,0,128,0.08);
+    border: 1px solid rgba(0,0,128,0.12);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--deep);
+    font-weight: 400;
+  }
+
+  /* ── CALCULATOR ── */
+  .calculator {
+    padding: 100px 80px;
+    background: var(--white);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
-    max-width: 1100px;
   }
 
   .calc-text h2 {
-    font-size: clamp(30px, 3vw, 44px);
-    font-weight: 300;
-    letter-spacing: -1px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 3vw, 48px);
+    font-weight: 400;
+    color: var(--deep);
     line-height: 1.1;
-    color: var(--text);
+    letter-spacing: -1.2px;
     margin-bottom: 20px;
   }
 
@@ -501,52 +636,29 @@
     margin-bottom: 36px;
   }
 
-  .stat-block {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 36px;
-  }
-  .stat-num {
-    font-size: 56px;
-    font-weight: 300;
-    color: var(--text);
-    letter-spacing: -3px;
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.4;
-    max-width: 140px;
-    font-weight: 300;
-  }
-
   .calc-widget {
-    background: rgba(26,79,239,0.2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 40px 36px;
+    background: var(--deep);
+    border-radius: 24px;
+    padding: 44px 40px;
   }
 
   .calc-widget h3 {
     font-size: 15px;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-bottom: 32px;
-    line-height: 1.5;
     font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    line-height: 1.55;
   }
 
-  .calc-field { margin-bottom: 28px; }
+  .calc-field { margin-bottom: 24px; }
 
-  .calc-field label {
+  .calc-label {
     display: block;
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 10px;
     font-weight: 500;
   }
 
@@ -555,23 +667,23 @@
   .num-wrap {
     display: flex;
     align-items: center;
-    background: rgba(0,0,128,0.6);
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
     overflow: hidden;
     flex: 1;
     transition: border-color 0.2s;
   }
-  .num-wrap:focus-within { border-color: var(--primary); }
+  .num-wrap:focus-within { border-color: var(--sky); }
 
   .num-wrap input {
     background: transparent;
     border: none;
     outline: none;
-    color: var(--text);
-    font-family: 'Karla', sans-serif;
-    font-size: 22px;
-    font-weight: 300;
+    color: #fff;
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    font-weight: 400;
     width: 70px;
     text-align: center;
     padding: 10px 0;
@@ -579,15 +691,15 @@
 
   .num-wrap span {
     font-size: 13px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.3);
     padding: 0 12px 0 0;
     font-weight: 300;
   }
 
   .calc-result {
-    background: rgba(0,127,255,0.12);
-    border: 1px solid rgba(0,127,255,0.3);
-    border-radius: 8px;
+    background: rgba(137,207,240,0.12);
+    border: 1px solid rgba(137,207,240,0.25);
+    border-radius: 14px;
     padding: 24px;
     margin-top: 28px;
     text-align: center;
@@ -597,29 +709,30 @@
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: rgba(137,207,240,0.6);
     margin-bottom: 8px;
     font-weight: 500;
   }
 
   .result-val {
-    font-size: 52px;
-    font-weight: 300;
-    color: #fff;
-    letter-spacing: -2px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--sky);
     line-height: 1;
+    letter-spacing: -2px;
   }
 
   .result-desc {
     font-size: 12px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.3);
     margin-top: 8px;
     font-weight: 300;
   }
 
   .calc-disclaimer {
     font-size: 11px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.2);
     margin-top: 16px;
     text-align: center;
     line-height: 1.5;
@@ -627,64 +740,69 @@
   }
 
   /* ── BENEFITS ── */
-  .benefits { padding: 100px 64px; }
+  .benefits {
+    padding: 100px 80px;
+    background: var(--cream2);
+  }
 
   .benefits-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: end;
-    margin-bottom: 60px;
+    margin-bottom: 56px;
   }
 
   .benefits-header h2 {
-    font-size: clamp(30px, 3vw, 44px);
-    font-weight: 300;
-    letter-spacing: -1px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 3.5vw, 50px);
+    font-weight: 400;
+    color: var(--deep);
     line-height: 1.1;
-    color: var(--text);
+    letter-spacing: -1.2px;
   }
 
   .benefits-header p {
     font-size: 15px;
     color: var(--text-muted);
-    line-height: 1.7;
+    line-height: 1.65;
     font-weight: 300;
-    max-width: 380px;
+    max-width: 340px;
   }
 
   .benefits-grid {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    gap: 2px;
+    border-radius: 18px;
     overflow: hidden;
+    background: rgba(0,0,128,0.08);
   }
 
   .benefit {
-    background: var(--deep);
+    background: var(--cream2);
     padding: 36px 30px;
     transition: background 0.3s;
   }
-  .benefit:hover { background: var(--surface); }
+  .benefit:hover { background: var(--cream); }
 
   .benefit-num {
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 20px;
+    color: rgba(0,0,128,0.25);
+    margin-bottom: 18px;
     font-weight: 500;
   }
 
   .benefit h3 {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text);
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--deep);
     margin-bottom: 10px;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
   }
 
   .benefit p {
@@ -694,33 +812,117 @@
     font-weight: 300;
   }
 
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 100px 80px;
+    background: var(--white);
+  }
+
+  .testimonials h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 3.5vw, 50px);
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    margin-bottom: 52px;
+    max-width: 500px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    border-radius: 18px;
+    padding: 32px;
+    border: 1px solid var(--border);
+  }
+
+  .testimonial-card.featured {
+    background: var(--deep);
+    border-color: transparent;
+  }
+
+  .t-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testimonial-card.featured .t-quote { color: rgba(255,255,255,0.85); }
+
+  .t-source {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .testimonial-card.featured .t-source { color: rgba(255,255,255,0.35); }
+
+  .t-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 3px;
+  }
+
+  .testimonial-card.featured .t-name { color: rgba(255,255,255,0.8); }
+
+  .t-detail {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .testimonial-card.featured .t-detail { color: rgba(255,255,255,0.35); }
+
   /* ── FAQ ── */
-  .faq { padding: 100px 64px; background: var(--surface); }
+  .faq {
+    padding: 100px 80px;
+    background: var(--deep);
+  }
 
-  .faq-inner { max-width: 780px; margin: 0 auto; }
+  .faq-inner { max-width: 760px; margin: 0 auto; }
 
-  .faq-header { text-align: center; margin-bottom: 56px; }
+  .faq-header { text-align: center; margin-bottom: 52px; }
+
+  .faq-header .section-eyebrow {
+    justify-content: center;
+    color: rgba(137,207,240,0.7);
+  }
+  .faq-header .section-eyebrow::before { color: rgba(137,207,240,0.7); }
 
   .faq-header h2 {
-    font-size: clamp(30px, 3vw, 44px);
-    font-weight: 300;
-    letter-spacing: -1px;
-    color: var(--text);
-    margin-top: 16px;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 3.5vw, 50px);
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -1.2px;
+    line-height: 1.1;
   }
 
   .faq-list {
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
   .faq-item {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     transition: background 0.2s;
   }
   .faq-item:last-child { border-bottom: none; }
-  .faq-item:hover { background: rgba(26,79,239,0.1); }
+  .faq-item:hover { background: rgba(255,255,255,0.04); }
 
   .faq-q {
     width: 100%;
@@ -737,29 +939,29 @@
 
   .faq-q span {
     font-size: 15px;
-    color: var(--text);
+    color: rgba(255,255,255,0.85);
     font-family: 'Karla', sans-serif;
     font-weight: 400;
     line-height: 1.4;
   }
 
-  .faq-icon {
-    width: 24px; height: 24px;
+  .faq-plus {
+    width: 26px; height: 26px;
     flex-shrink: 0;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.4);
     font-size: 14px;
     transition: all 0.25s;
   }
 
-  .faq-item.open .faq-icon {
+  .faq-item.open .faq-plus {
     transform: rotate(45deg);
-    border-color: var(--primary);
-    color: var(--primary);
+    border-color: var(--sky);
+    color: var(--sky);
   }
 
   .faq-a {
@@ -767,33 +969,36 @@
     overflow: hidden;
     transition: max-height 0.35s ease;
   }
-  .faq-item.open .faq-a { max-height: 180px; }
+  .faq-item.open .faq-a { max-height: 160px; }
 
   .faq-a p {
     padding: 0 28px 22px;
     font-size: 14px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.45);
     line-height: 1.7;
     font-weight: 300;
   }
 
   /* ── FOOTER ── */
   footer {
-    padding: 80px 64px 40px;
-    border-top: 1px solid var(--border);
+    background: var(--deep);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 80px 80px 0;
   }
 
   .footer-top {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
 
   .footer-logo {
+    font-family: 'Karla', sans-serif;
     font-size: 20px;
     font-weight: 500;
-    color: var(--text);
+    color: #fff;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -802,19 +1007,56 @@
   }
 
   .footer-brand p {
-    font-size: 13px;
-    color: var(--text-dim);
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
     line-height: 1.7;
-    max-width: 280px;
+    max-width: 260px;
     font-weight: 300;
     margin-bottom: 28px;
   }
+
+  .footer-newsletter {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 280px;
+  }
+
+  .footer-newsletter input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Karla', sans-serif;
+    font-size: 13px;
+    padding: 11px 14px;
+    flex: 1;
+    font-weight: 300;
+  }
+
+  .footer-newsletter input::placeholder { color: rgba(255,255,255,0.25); }
+
+  .footer-newsletter button {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    padding: 11px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .footer-newsletter button:hover { background: rgba(255,255,255,0.15); }
 
   .footer-col h4 {
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.25);
     margin-bottom: 18px;
     font-weight: 500;
   }
@@ -828,86 +1070,113 @@
 
   .footer-col ul a {
     font-size: 14px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
     font-weight: 300;
     transition: color 0.2s;
   }
-  .footer-col ul a:hover { color: var(--text); }
+  .footer-col ul a:hover { color: rgba(255,255,255,0.85); }
+
+  /* ── BOTTOM MARQUEE ── */
+  .marquee-section {
+    background: var(--deep);
+    overflow: hidden;
+    padding: 48px 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-track span {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(64px, 8vw, 112px);
+    color: rgba(255,255,255,0.05);
+    padding: 0 40px;
+    letter-spacing: -3px;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
   .footer-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
+    padding: 24px 0 32px;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
   }
 
   .footer-bottom p {
     font-size: 12px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.2);
     font-weight: 300;
   }
 
   .footer-disclaimer {
     font-size: 11px;
-    color: var(--text-dim);
+    color: rgba(255,255,255,0.18);
     line-height: 1.6;
-    max-width: 560px;
-    margin-top: 28px;
-    padding-top: 28px;
+    padding: 24px 0;
     border-top: 1px solid rgba(255,255,255,0.05);
     font-weight: 300;
   }
 
-  /* ── GOLD ACCENT ── */
-  .gold { color: var(--gold); }
-  .sky { color: var(--sky); }
-
-  /* ── ANIMATIONS ── */
-  .fade-in {
+  /* ── FADE ANIMATIONS ── */
+  .fade-up {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .fade-in:nth-child(2) { transition-delay: 0.08s; }
-  .fade-in:nth-child(3) { transition-delay: 0.16s; }
-  .fade-in:nth-child(4) { transition-delay: 0.24s; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    nav { padding: 0 28px; }
+    nav { padding: 0 24px; }
     .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
+    .hero-right { min-height: 40vh; display: none; }
     .hero-left { padding: 80px 40px; }
-    .why { grid-template-columns: 1fr 1fr; }
-    .process { padding: 72px 40px; }
-    .process-header { grid-template-columns: 1fr; gap: 20px; }
-    .process-grid { grid-template-columns: 1fr 1fr; }
-    .calculator { padding: 72px 40px; }
-    .calc-inner { grid-template-columns: 1fr; gap: 48px; }
+    .dark-band { grid-template-columns: 1fr 1fr; padding: 48px 40px; gap: 32px; }
+    .products { padding: 72px 40px; }
+    .products-header { grid-template-columns: 1fr; gap: 24px; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .science { padding: 72px 40px; grid-template-columns: 1fr; gap: 48px; }
+    .calculator { padding: 72px 40px; grid-template-columns: 1fr; gap: 48px; }
     .benefits { padding: 72px 40px; }
     .benefits-header { grid-template-columns: 1fr; gap: 20px; }
     .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials { padding: 72px 40px; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
     .faq { padding: 72px 40px; }
-    footer { padding: 60px 40px 32px; }
+    footer { padding: 60px 40px 0; }
     .footer-top { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 768px) {
     .nav-links { display: none; }
-    .why { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr; }
+    .dark-band { grid-template-columns: 1fr; }
+    .band-item { border-right: none; margin-right: 0; padding-right: 0; }
+    .products-grid { grid-template-columns: 1fr; }
     .benefits-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="logo">klera <span class="logo-dot"></span></a>
   <ul class="nav-links">
@@ -916,223 +1185,246 @@
     <li><a href="#faq">faq</a></li>
   </ul>
   <div class="nav-right">
-    <button class="btn-ghost">sign in</button>
-    <a href="#" class="btn-cta">get started</a>
+    <button class="btn-signin">sign in</button>
+    <a href="#" class="btn-started">get started</a>
   </div>
 </nav>
 
-<div class="banner">
-  find the right plan for you — <a href="#">take the quiz →</a>
-</div>
+<!-- BANNER -->
+<div class="banner">find the right plan for you <a href="#">take the quiz →</a></div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="eyebrow">health stewardship</div>
-    <h1 class="hero-h1">
-      thoughtful care for your <strong>best, longest</strong> life.
-    </h1>
-    <p class="hero-sub">
-      glp-1 therapy, clinical guidance, and ongoing support in one streamlined, holistic experience.
-    </p>
-    <div class="hero-ctas">
-      <a href="#" class="btn-primary">start your journey</a>
-      <a href="#process" class="btn-secondary">see how it works</a>
+    <h1 class="hero-h1">A life-changing health routine, built for your metabolism.</h1>
+    <p class="hero-sub">GLP-1 therapy, clinical guidance, and ongoing support in one streamlined, holistic experience.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-pill-dark">start your journey</a>
+      <a href="#process" class="btn-pill-link">see how it works →</a>
     </div>
     <div class="trust-row">
-      <div class="trust-item"><span class="trust-dot"></span>licensed clinicians</div>
-      <div class="trust-item"><span class="trust-dot"></span>discreet delivery</div>
-      <div class="trust-item"><span class="trust-dot"></span>hipaa secure</div>
+      <div class="trust-badge"><span class="trust-check">✓</span>licensed clinicians</div>
+      <div class="trust-badge"><span class="trust-check">✓</span>discreet delivery</div>
+      <div class="trust-badge"><span class="trust-check">✓</span>hipaa secure</div>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-card fade-in">
-      <div class="card-step">01 · intake</div>
-      <div class="card-title">tell us about you.</div>
-      <div class="card-desc">a short online intake covers your goals, history, and routine. about 5 minutes.</div>
-      <div class="card-tag">● free · no commitment</div>
+    <div class="hero-bg-circles">
+      <div class="hero-circle" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div class="hero-circle" style="width:360px;height:360px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+      <div class="hero-circle" style="width:220px;height:220px;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
     </div>
-    <div class="hero-card fade-in">
-      <div class="card-step">02 · clinician review</div>
-      <div class="card-title">meet your klera clinician.</div>
-      <div class="card-desc">a licensed provider reviews your intake and prescribes the right plan — often same day.</div>
-      <div class="card-tag sky">● verified clinician · same-day review</div>
+    <div class="hero-pill-visual">
+      <div class="pill-container">
+        <div class="pill-inner">
+          <div class="pill-dot"></div>
+          <div class="pill-label">klera<br>GLP-1</div>
+        </div>
+      </div>
     </div>
-    <div class="hero-card fade-in">
-      <div class="card-step">03 · treatment</div>
-      <div class="card-title">start treatment from home.</div>
-      <div class="card-desc">medication ships discreetly to your door. right dose, on schedule, no surprises.</div>
-      <div class="card-tag">● discreet · tracked</div>
-    </div>
-    <div class="hero-card fade-in">
-      <div class="card-step">04 · ongoing care</div>
-      <div class="card-title">stay supported, every step.</div>
-      <div class="card-desc">check-ins, messaging, dose changes, and refill requests — all in your klera portal.</div>
-      <div class="card-tag gold">● avg. 5.2 lbs down · month one</div>
+    <div class="hero-stat-badge">
+      <div class="hero-stat-label">avg. weight lost</div>
+      <div class="hero-stat-num">15–20%</div>
+      <div class="hero-stat-desc">in the first year on GLP-1 therapy</div>
     </div>
   </div>
 </section>
 
-<div class="why">
-  <div class="why-item">
-    <div class="why-icon">◈</div>
-    <h3>science-driven</h3>
-    <p>evidence-guided care decisions, not trend-chasing. clinical rigor at every step.</p>
+<!-- DARK BAND -->
+<div class="dark-band">
+  <div class="band-item">
+    <div class="band-label">operating philosophy</div>
+    <div class="band-title">science-driven</div>
+    <div class="band-desc">evidence-guided care decisions at every step.</div>
   </div>
-  <div class="why-item">
-    <div class="why-icon">◎</div>
-    <h3>ongoing support</h3>
-    <p>a real care team that checks in, adjusts, and responds — for as long as you need.</p>
+  <div class="band-item">
+    <div class="band-label">care model</div>
+    <div class="band-title">ongoing support</div>
+    <div class="band-desc">a real care team for as long as you need.</div>
   </div>
-  <div class="why-item">
-    <div class="why-icon">◇</div>
-    <h3>blue chip pharmacy</h3>
-    <p>vetted pharmacy partners. the right medication, compounded or brand, delivered right.</p>
+  <div class="band-item">
+    <div class="band-label">fulfillment</div>
+    <div class="band-title">blue chip pharmacy</div>
+    <div class="band-desc">vetted partners, right medication, delivered.</div>
   </div>
-  <div class="why-item">
-    <div class="why-icon">◉</div>
-    <h3>secure & private</h3>
-    <p>hipaa-compliant. your data stays with your care team — no one else.</p>
+  <div class="band-item">
+    <div class="band-label">data</div>
+    <div class="band-title">secure & private</div>
+    <div class="band-desc">hipaa-compliant. your data, your care team only.</div>
   </div>
 </div>
 
-<section class="process" id="process">
-  <div class="process-header">
+<!-- STEPS / PROCESS -->
+<section class="products" id="process">
+  <div class="products-header">
     <div>
-      <div class="section-label">our process</div>
+      <div class="section-eyebrow" style="color:rgba(137,207,240,0.7)">● our process</div>
       <h2>thoughtful care, in four clear steps.</h2>
     </div>
-    <p>from your first intake to ongoing support, klera coordinates clinical guidance, medication, and follow-up so treatment fits into the rest of your life.</p>
+    <div>
+      <p>from your first intake to ongoing support, klera coordinates clinical guidance, medication, and follow-up so treatment fits into the rest of your life.</p>
+    </div>
   </div>
 
-  <div class="process-grid">
-    <div class="step fade-in">
-      <div class="step-num">step 01</div>
+  <div class="products-grid">
+    <div class="product-card fade-up">
+      <div class="product-num">01</div>
+      <div class="product-step-tag">step 01</div>
+      <div class="product-icon">📋</div>
       <h3>tell us about you.</h3>
       <p>a short online intake covers your goals, history, and how you'd like care to fit your routine. about 5 minutes.</p>
-      <div class="step-snippet">
+      <div class="product-snippet">
         <strong>intake</strong>
         what brings you here today?<br>
         <span style="opacity:0.6">weight loss · metabolic health · pcos</span>
       </div>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">step 02</div>
+
+    <div class="product-card fade-up">
+      <div class="product-num">02</div>
+      <div class="product-step-tag">step 02</div>
+      <div class="product-icon">👩‍⚕️</div>
       <h3>meet your klera clinician.</h3>
-      <p>a licensed provider reviews your intake and prescribes the right plan — often the same day, always with a note from someone who actually read your story.</p>
-      <div class="step-snippet">
-        <strong>verified clinician</strong>
+      <p>a licensed provider reviews your intake and prescribes the right plan — often the same day.</p>
+      <div class="product-snippet">
+        <strong>● verified clinician</strong>
         "reviewed your intake. starting you on a 0.25 mg semaglutide titration."
       </div>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">step 03</div>
+
+    <div class="product-card fade-up">
+      <div class="product-num">03</div>
+      <div class="product-step-tag">step 03</div>
+      <div class="product-icon">📦</div>
       <h3>start treatment from home.</h3>
-      <p>medication ships discreetly to your door. no pharmacy lines, no unmarked-package surprises — just the right dose, on schedule.</p>
-      <div class="step-snippet">
+      <p>medication ships discreetly to your door. no pharmacy lines, no surprises — right dose, on schedule.</p>
+      <div class="product-snippet">
         <strong>shipping</strong>
         semaglutide 0.25 mg · 4-week supply<br>
         <span style="opacity:0.6">arrives discreetly, on schedule</span>
       </div>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">step 04</div>
+
+    <div class="product-card fade-up">
+      <div class="product-badge">● ongoing care</div>
+      <div class="product-step-tag">step 04</div>
+      <div class="product-icon">📊</div>
       <h3>stay supported, every step.</h3>
-      <p>weight check-ins, messaging, dose changes, and refill requests all happen in your klera portal — for as long as you need.</p>
-      <div class="step-snippet">
-        <strong>progress</strong>
+      <p>check-ins, messaging, dose changes, and refill requests — all in your klera portal, for as long as you need.</p>
+      <div class="product-snippet">
+        <strong>● progress</strong>
         down this month: <strong style="color:#fff">5.2 lbs</strong><br>
         <span style="opacity:0.6">"looking great — let me know about next refill."</span>
       </div>
     </div>
   </div>
 
-  <div class="process-footer">
-    <a href="#" class="btn-primary">start your intake</a>
-    <span class="process-note">free · takes about 5 minutes</span>
+  <div class="products-cta">
+    <a href="#" class="btn-pill-dark">start your intake</a>
+    <span class="note-text">free · takes about 5 minutes</span>
   </div>
 </section>
 
+<!-- SCIENCE / CALCULATOR -->
+<section class="science">
+  <div class="science-text">
+    <div class="section-eyebrow">● the science</div>
+    <h2>most glp-1 programs don't survive the real world. klera does.</h2>
+    <p>we built klera around one insight: sustainable weight loss requires clinical expertise, real accountability, and a care model designed for your life — not a pill-ordering funnel.</p>
+    <a href="#" class="btn-pill-dark">learn more</a>
+  </div>
+  <div class="science-visual">
+    <div class="science-stat-big">15–20%</div>
+    <div class="science-stat-label">average body weight lost in year one on GLP-1 therapy under clinical guidance</div>
+    <div class="science-divider"></div>
+    <div class="science-pills">
+      <span class="science-pill">clinically guided</span>
+      <span class="science-pill">24 live strains</span>
+      <span class="science-pill">discreet delivery</span>
+      <span class="science-pill">same-day review</span>
+      <span class="science-pill">hipaa compliant</span>
+      <span class="science-pill">ongoing support</span>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
 <section class="calculator" id="calculator">
-  <div class="calc-inner">
-    <div class="calc-text">
-      <div class="section-label">your potential</div>
-      <h2>take control of your weight loss.</h2>
-      <p>patients on glp-1 therapy lose up to 15–20% of their body weight in their first year. enter your numbers to see what's possible.</p>
-      <div class="stat-block">
-        <span class="stat-num">20%</span>
-        <span class="stat-label">avg. body weight lost in year one on glp-1 therapy</span>
-      </div>
-      <a href="#" class="btn-primary">get started</a>
-    </div>
-    <div class="calc-widget">
-      <h3>enter your height and weight to see what's possible.</h3>
-      <div class="calc-field">
-        <label>how tall are you?</label>
-        <div class="input-row">
-          <div class="num-wrap">
-            <input type="number" id="feet" value="5" min="4" max="7">
-            <span>ft</span>
-          </div>
-          <div class="num-wrap">
-            <input type="number" id="inches" value="8" min="0" max="11">
-            <span>in</span>
-          </div>
+  <div class="calc-text">
+    <div class="section-eyebrow">● your potential</div>
+    <h2>take control of your weight loss.</h2>
+    <p>patients on glp-1 therapy lose up to 15–20% of their body weight in their first year. enter your numbers to see what's possible.</p>
+    <a href="#" class="btn-pill-dark">get started</a>
+  </div>
+  <div class="calc-widget">
+    <h3>enter your height and weight to see what's possible with glp-1 therapy.</h3>
+    <div class="calc-field">
+      <label class="calc-label">how tall are you?</label>
+      <div class="input-row">
+        <div class="num-wrap">
+          <input type="number" id="feet" value="5" min="4" max="7">
+          <span>ft</span>
+        </div>
+        <div class="num-wrap">
+          <input type="number" id="inches" value="8" min="0" max="11">
+          <span>in</span>
         </div>
       </div>
-      <div class="calc-field">
-        <label>how much do you currently weigh?</label>
-        <div class="input-row">
-          <div class="num-wrap" style="max-width:150px">
-            <input type="number" id="weight" value="200" min="100" max="500">
-            <span>lb</span>
-          </div>
+    </div>
+    <div class="calc-field">
+      <label class="calc-label">how much do you currently weigh?</label>
+      <div class="input-row">
+        <div class="num-wrap" style="max-width:150px">
+          <input type="number" id="weight" value="200" min="100" max="500">
+          <span>lb</span>
         </div>
       </div>
-      <div class="calc-result">
-        <div class="result-label">you could lose up to</div>
-        <div class="result-val" id="lossResult">40 lb</div>
-        <div class="result-desc">projected 20% body weight reduction in 12 months</div>
-      </div>
-      <p class="calc-disclaimer">illustrative estimate. clinical eligibility and treatment plans vary. results not guaranteed.</p>
     </div>
+    <div class="calc-result">
+      <div class="result-label">you could lose up to</div>
+      <div class="result-val" id="lossResult">40 lb</div>
+      <div class="result-desc">projected 20% body weight reduction in 12 months</div>
+    </div>
+    <p class="calc-disclaimer">illustrative estimate. clinical eligibility and treatment plans vary. results not guaranteed.</p>
   </div>
 </section>
 
+<!-- BENEFITS -->
 <section class="benefits" id="benefits">
   <div class="benefits-header">
     <div>
-      <div class="section-label">clinical benefits</div>
+      <div class="section-eyebrow">● clinical benefits</div>
       <h2>life-changing benefits of glp-1 medications.</h2>
     </div>
     <p>formulations designed around your biology, not just your scale.</p>
   </div>
   <div class="benefits-grid">
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">01</div>
       <h3>significant weight loss</h3>
       <p>patients taking glp-1s lose up to 15% of their body weight in one year of consistent treatment.</p>
     </div>
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">02</div>
       <h3>improved heart health</h3>
       <p>consistent treatment may help support lower blood pressure and stronger cardiovascular outcomes.</p>
     </div>
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">03</div>
       <h3>better blood sugar control</h3>
       <p>glp-1 medications can help regulate glucose levels and improve long-term metabolic stability.</p>
     </div>
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">04</div>
       <h3>reduced food cravings</h3>
-      <p>treatment lowers appetite signals and makes it easier to maintain healthier eating patterns over time.</p>
+      <p>treatment lowers appetite signals and makes it easier to maintain healthier eating patterns.</p>
     </div>
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">05</div>
       <h3>increased energy levels</h3>
-      <p>steady progress and improved metabolic health contribute to better day-to-day energy and vitality.</p>
+      <p>steady progress and improved metabolic health contribute to better day-to-day energy.</p>
     </div>
-    <div class="benefit fade-in">
+    <div class="benefit fade-up">
       <div class="benefit-num">06</div>
       <h3>enhanced quality of life</h3>
       <p>sustained weight loss and clinical support make movement, confidence, and daily routines feel easier.</p>
@@ -1140,52 +1432,76 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-eyebrow">● member stories</div>
+  <h2>over 1 million health transformations (and counting).</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card featured">
+      <div class="t-quote">"klera didn't feel like a transaction. it felt like someone actually read my story and built a plan around my life."</div>
+      <div class="t-name">zam k.</div>
+      <div class="t-detail">member since 2026 · lost 28 lbs</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-quote">"same-day review, medication at my door three days later. i've never had care feel this seamless."</div>
+      <div class="t-name">priya r.</div>
+      <div class="t-detail">member since 2026 · lost 19 lbs</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-quote">"the ongoing check-ins made all the difference. i always knew my care team was actually watching."</div>
+      <div class="t-name">marcus t.</div>
+      <div class="t-detail">member since 2025 · lost 34 lbs</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="faq-header">
-      <div class="section-label" style="justify-content:center">frequently asked</div>
+      <div class="section-eyebrow" style="justify-content:center">● frequently asked</div>
       <h2>questions.</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>how does the klera process work?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>you begin with a short intake, review your goals with a clinician, complete any required lab work, and then move into a guided treatment plan with ongoing follow-up.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>who is this program designed for?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>this program is intended for adults who want medically guided support for weight management and want a simpler way to coordinate care, prescriptions, and check-ins.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>will i know whether treatment is right for me?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>a clinician reviews your health history, current measurements, and goals before making a recommendation. the experience is designed to give you clarity before anything moves forward.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>what kind of support do i receive after starting?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>the care model includes ongoing monitoring, progress reviews, and practical support so treatment does not feel like a one-time handoff after the first appointment.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>what does treatment typically cost?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>pricing depends on the medication and plan your clinician recommends. you'll see a clear, all-in monthly figure — including the prescription, clinical follow-up, and shipping — before anything is charged.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           <span>is my information kept private?</span>
-          <div class="faq-icon">+</div>
+          <div class="faq-plus">+</div>
         </button>
         <div class="faq-a"><p>your health information is handled under hipaa and is only shared with the clinicians directly involved in your care. shipments arrive in plain, unmarked packaging.</p></div>
       </div>
@@ -1193,20 +1509,31 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <a href="#" class="footer-logo">klera <span class="logo-dot"></span></a>
       <p>thoughtful obesity medicine, clinical guidance, and ongoing support in one elegant experience. supporting a life well lived, longer.</p>
-      <a href="#" class="btn-primary">start your journey</a>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="your email">
+        <button>→</button>
+      </div>
     </div>
     <div class="footer-col">
-      <h4>company</h4>
+      <h4>products</h4>
       <ul>
-        <li><a href="#">about</a></li>
-        <li><a href="#">our process</a></li>
+        <li><a href="#">glp-1 weight care</a></li>
         <li><a href="#">care plans</a></li>
         <li><a href="#">for providers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>about</h4>
+      <ul>
+        <li><a href="#">our process</a></li>
+        <li><a href="#">science</a></li>
+        <li><a href="#">join</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1214,19 +1541,34 @@
       <ul>
         <li><a href="#">sign in</a></li>
         <li><a href="#">faq</a></li>
-        <li><a href="#">contact support</a></li>
-        <li><a href="#">privacy policy</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">privacy</a></li>
       </ul>
     </div>
   </div>
+
   <div class="footer-disclaimer">
     *these statements have not been evaluated by the food and drug administration. this product is not intended to diagnose, treat, cure or prevent any disease. weight loss results depicted are not typical and individual results may vary.
   </div>
+
   <div class="footer-bottom">
-    <p>© 2026 klera (klera health, inc.)</p>
-    <p>all rights reserved</p>
+    <p>© 2026 klera (klera health, inc.) · all rights reserved</p>
   </div>
 </footer>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>awaken within.</span>
+    <span>your best life.</span>
+    <span>thoughtful care.</span>
+    <span>longer, better.</span>
+    <span>awaken within.</span>
+    <span>your best life.</span>
+    <span>thoughtful care.</span>
+    <span>longer, better.</span>
+  </div>
+</div>
 
 <script>
   function toggleFaq(btn) {
@@ -1235,8 +1577,7 @@
 
   function updateCalc() {
     const w = parseFloat(document.getElementById('weight').value) || 200;
-    const loss = Math.round(w * 0.20);
-    document.getElementById('lossResult').textContent = loss + ' lb';
+    document.getElementById('lossResult').textContent = Math.round(w * 0.20) + ' lb';
   }
 
   ['weight','feet','inches'].forEach(id => {
@@ -1247,7 +1588,7 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
